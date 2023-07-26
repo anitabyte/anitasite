@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Pi Any Means Necessary #1: Overclocking and cooling :: anitabyte</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="In which I try to live with my compute being entirely provided by a tiny little guy in a tiny little case, with some forays into cooling and benchmarking" />
+<meta name="keywords" content="pi, cooling, benchmarks, sysbench, raspberry pi, stressberry" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/pi_any_means_necessary_1/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="/img/theme-colors/pink.png">
+  <link rel="apple-touch-icon" href="/img/theme-colors/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Pi Any Means Necessary #1: Overclocking and cooling">
+<meta property="og:description" content="In which I try to live with my compute being entirely provided by a tiny little guy in a tiny little case, with some forays into cooling and benchmarking" />
+<meta property="og:url" content="/posts/pi_any_means_necessary_1/" />
+<meta property="og:site_name" content="anitabyte" />
+
+  
+  
+  <meta property="og:image" content="/">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2023-07-19 22:36:37 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    anitabyte
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/showcase" >Showcase</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/pi_any_means_necessary_1/">Pi Any Means Necessary #1: Overclocking and cooling</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2023-07-19</time><span class="post-reading-time">6 min read (1128 words)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/pi/">pi</a>&nbsp;
+      
+      #<a href="/tags/cooling/">cooling</a>&nbsp;
+      
+      #<a href="/tags/benchmarks/">benchmarks</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>I&rsquo;ve had a deep appreciation for the <a href="https://www.raspberrypi.org/">Raspberry Pi</a> since it&rsquo;s initial launch in 2012: the promise of a computer for the home that costs $35 (or, perversely, £35) made the possibility of a universally available and affordable computer for people&rsquo;s homes a far more realistic one than it had been in my youth of attempting to learn everything I could about computers from stolen hours in public libraries and borrowed and outmoded hardware.</p>
+<p>I&rsquo;d picked up Pis for projects in the past and not really used them in the capacity of a real &lsquo;desktop&rsquo; computer, but rather used them as headless devices to act as servers and the like at a more reasonable power consumption than a full x86 device. I realised that I&rsquo;d not had that &lsquo;real&rsquo; daily-driver type experience with a Pi - in spite of my appreciation of the goal of such a cheap device being capable of acting as such - and decided to set myself the challenge of using a Raspberry Pi 4 8GB as my primary computer.</p>
+<p>So with the variant of the Pi I was going to use chosen, I still had some choices to make regarding what I was going to do in terms of the software I was going to run on it, any accessories for this &lsquo;project&rsquo; and how best to configure everything for as good an experience as I could get. Being a person able to make sound prioritisation decisions, I&rsquo;d started with the &lsquo;accessories&rsquo; question.</p>
+<p>Over the years, I&rsquo;ve been exposed to an awfully large number of novel homes for the Raspberry Pi, and I couldn&rsquo;t be more susceptible to the idea of a cute home for my little computing pal. I&rsquo;d come across the <a href="https://wiki.52pi.com/index.php?title=ZP-0130">52Pi ZP-0130</a>, a case for the Pi that includes a case with an OLED screen on the front of it, a cooler (the <a href="https://thepihut.com/products/ice-tower-raspberry-pi-4-cpu-cooler">52Pi ICE Tower</a>, replete with an RGB fan) for the Pi and a board that would allow me to connect a SATA M.2 SSD - one of which I had hanging around in a drawer with no idea where it had come from.</p>
+<p>I was curious to see what the benefit of having such a large heatsink and fan on the Pi would be, knowing that the processors have a habit of generating quite a bit of heat, so used <a href="https://pypi.org/project/stressberry/">stressberry</a>, <a href="https://github.com/akopytov/sysbench">sysbench</a>, openssl&rsquo;s benchmarks and 7-Zip&rsquo;s benchmark to understand a little better what I gain from each stage in the evolution from Pi with no cooling, to Pi with passive cooling from the heatsink to Pi with heatsink and fan.</p>
+<p>First, invoking stressberry with <code>stressberry-run --duration 900 --idle 120</code> to have the processor just do a lot of work that doesn&rsquo;t amount to anything but generating heat:</p>
+
+  <figure class="left" >
+    <img src="sb_no_oc_no_heatsink_no_fan.png"   />
+    
+      <figcaption class="center" >Stressberry run with no overclocking, no heatsink and no fan</figcaption>
+    
+  </figure>
+
+
+<p>We see that we get a fair amount of throttling at around 80 degree Celsius and upwards: at that point, the processor becomes throttled in an attempt to prevent any thermal damage. Bearing in mind that this is - at the moment, at least - how a Pi comes from the factory, the need for some sort of cooling system becomes clear.</p>
+<p>Having installed the heatsink, I ran the same stressberry test:</p>
+
+  <figure class="left" >
+    <img src="sb_no_oc_heatsink_no_fan.png"   />
+    
+      <figcaption class="center" >Stressberry run with no overclocking, heatsink fitted and no fan</figcaption>
+    
+  </figure>
+
+
+<p>Once our test starts at 120 seconds in, the CPU hits the stock 1.8GHz and doesn&rsquo;t become throttled at any point during the test. It also doesn&rsquo;t hit anywhere near the same temperatures: having a fairly sizeable chunk of metal on top of the processor draws heat away from it. Who would have thought.</p>
+<p>While the heatsink seems sufficient at 1.8GHz, I was curious to see what effect turning the fan on would have on the thermals of the Pi. Running the same stressberry test again:</p>
+
+  <figure class="left" >
+    <img src="sb_no_oc_heatsink_fan.png"   />
+    
+      <figcaption class="center" >Stressberry run with no overclocking, heatsink fitted and fan turned on</figcaption>
+    
+  </figure>
+
+
+<p>It turns out that the combination of a large metal block to transfer the heat away from the processor combined with using the movement of air to get the heat away from the heatsink is a tried-and-true combination for cooling CPUs. Given the fetishisation of the enthusiast community for water-cooling, this may be news to some. With the fan turned on, our temperatures never break 50 degrees Celsius.</p>
+<p>But what does this mean for &lsquo;real-world&rsquo; performance? Well, as close as we can get to &lsquo;real-world&rsquo; performance with some synthetic benchmarks? For all values in the table below, higher is better.</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Sysbench 8-thread CPU test  (events/s)</th>
+<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
+<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
+<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No heatsink, no fan</td>
+<td>7141.39</td>
+<td>7194</td>
+<td>3466</td>
+<td>170033.15k</td>
+</tr>
+<tr>
+<td>Heatsink, no fan</td>
+<td>7953.79</td>
+<td>7967</td>
+<td>3760</td>
+<td>187899.19k</td>
+</tr>
+<tr>
+<td>Heatsink and fan</td>
+<td><strong>7961.10</strong></td>
+<td><strong>8083</strong></td>
+<td><strong>3920</strong></td>
+<td><strong>189683.03k</strong></td>
+</tr>
+</tbody>
+</table>
+<p>We see that for each of the tests, heatsink outperforms non-heatsink configurations by around 5-10% in each of these tests, with fan and heatsink configurations performing marginally better again, but perhaps only within a margin of error. This is broadly what we&rsquo;d expect to see given the fact that we don&rsquo;t see any throttling in any configuration that involves the heatsink.</p>
+<p>If I&rsquo;m using the Pi as my primary computer, I want to give it the best possible chance that I can to get the most that I can out of the board. With that in mind, and with how trivial it is to overclock the Pi with little more than a couple of changes to a config file, I went ahead and added the following to the Pi&rsquo;s <code>/boot/config.txt</code>:</p>
+<pre tabindex="0"><code>arm_freq=2200
+gpu_freq=750
+over_voltage=8
+</code></pre><p>This represents an overclock of 22.22% from the stock clock speeds of the Pi at the cost of applying a little more voltage and perhaps drawing a little more power from the wall: if you&rsquo;re doing this, please make sure you&rsquo;re using a decent power supply. I then ran stressberry again to ensure that the now-definitely-hotter CPU was still running in a way that wouldn&rsquo;t lead to it being throttled:</p>
+
+  <figure class="left" >
+    <img src="sb_oc_heatsink_fan.png"   />
+    
+      <figcaption class="center" >Stressberry run with overclocking, heatsink and fan</figcaption>
+    
+  </figure>
+
+
+<p>Remarkably, even with the overclock, this cooling solution only goes around 10 degrees Celsius hotter, and the Pi seems to run stable with it. We appear to have gained a theoretical 20% performance improvement for &lsquo;free&rsquo;! Running our benchmarks again:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Sysbench 8-thread CPU test  (events/s)</th>
+<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
+<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
+<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heatsink and fan</td>
+<td>7961.10</td>
+<td>8083</td>
+<td>3920</td>
+<td>189683.03k</td>
+</tr>
+<tr>
+<td>Heatsink and fan, overclocked</td>
+<td>8756.07</td>
+<td>8808</td>
+<td>3986</td>
+<td>208939.69k</td>
+</tr>
+</tbody>
+</table>
+<p>So maybe not quite 20%, but ~10% is nothing to be scoffed at for the price of a configuration file change!</p>
+<h3 id="appendix">Appendix<a href="#appendix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The following commands were invoked for each of the tests:</p>
+<p><strong>Sysbench</strong>: <code>sysbench cpu --threads=8 --time=120 run</code></p>
+<p><strong>7-Zip</strong>: <code>7zr b</code></p>
+<p><strong>OpenSSL</strong>: <code>openssl speed -evp sha256</code></p>
+
+      </div></div>
+
+  
+    
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a>, modified by anitabyte</span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

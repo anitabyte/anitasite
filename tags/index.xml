@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on anitabyte</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on anitabyte</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Jul 2023 22:36:37 +0100</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>benchmarks</title>
+      <link>/tags/benchmarks/</link>
+      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+      
+      <guid>/tags/benchmarks/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>cooling</title>
+      <link>/tags/cooling/</link>
+      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+      
+      <guid>/tags/cooling/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>pi</title>
+      <link>/tags/pi/</link>
+      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+      
+      <guid>/tags/pi/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+  </channel>
+</rss>

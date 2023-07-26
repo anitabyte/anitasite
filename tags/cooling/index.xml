@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cooling on anitabyte</title>
+    <link>/tags/cooling/</link>
+    <description>Recent content in cooling on anitabyte</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Jul 2023 22:36:37 +0100</lastBuildDate><atom:link href="/tags/cooling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi Any Means Necessary #1: Overclocking and cooling</title>
+      <link>/posts/pi_any_means_necessary_1/</link>
+      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+      
+      <guid>/posts/pi_any_means_necessary_1/</guid>
+      <description>I&amp;rsquo;ve had a deep appreciation for the Raspberry Pi since it&amp;rsquo;s initial launch in 2012: the promise of a computer for the home that costs $35 (or, perversely, £35) made the possibility of a universally available and affordable computer for people&amp;rsquo;s homes a far more realistic one than it had been in my youth of attempting to learn everything I could about computers from stolen hours in public libraries and borrowed and outmoded hardware.</description>
+      <content>&lt;p&gt;I&amp;rsquo;ve had a deep appreciation for the &lt;a href=&#34;https://www.raspberrypi.org/&#34;&gt;Raspberry Pi&lt;/a&gt; since it&amp;rsquo;s initial launch in 2012: the promise of a computer for the home that costs $35 (or, perversely, £35) made the possibility of a universally available and affordable computer for people&amp;rsquo;s homes a far more realistic one than it had been in my youth of attempting to learn everything I could about computers from stolen hours in public libraries and borrowed and outmoded hardware.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d picked up Pis for projects in the past and not really used them in the capacity of a real &amp;lsquo;desktop&amp;rsquo; computer, but rather used them as headless devices to act as servers and the like at a more reasonable power consumption than a full x86 device. I realised that I&amp;rsquo;d not had that &amp;lsquo;real&amp;rsquo; daily-driver type experience with a Pi - in spite of my appreciation of the goal of such a cheap device being capable of acting as such - and decided to set myself the challenge of using a Raspberry Pi 4 8GB as my primary computer.&lt;/p&gt;
+&lt;p&gt;So with the variant of the Pi I was going to use chosen, I still had some choices to make regarding what I was going to do in terms of the software I was going to run on it, any accessories for this &amp;lsquo;project&amp;rsquo; and how best to configure everything for as good an experience as I could get. Being a person able to make sound prioritisation decisions, I&amp;rsquo;d started with the &amp;lsquo;accessories&amp;rsquo; question.&lt;/p&gt;
+&lt;p&gt;Over the years, I&amp;rsquo;ve been exposed to an awfully large number of novel homes for the Raspberry Pi, and I couldn&amp;rsquo;t be more susceptible to the idea of a cute home for my little computing pal. I&amp;rsquo;d come across the &lt;a href=&#34;https://wiki.52pi.com/index.php?title=ZP-0130&#34;&gt;52Pi ZP-0130&lt;/a&gt;, a case for the Pi that includes a case with an OLED screen on the front of it, a cooler (the &lt;a href=&#34;https://thepihut.com/products/ice-tower-raspberry-pi-4-cpu-cooler&#34;&gt;52Pi ICE Tower&lt;/a&gt;, replete with an RGB fan) for the Pi and a board that would allow me to connect a SATA M.2 SSD - one of which I had hanging around in a drawer with no idea where it had come from.&lt;/p&gt;
+&lt;p&gt;I was curious to see what the benefit of having such a large heatsink and fan on the Pi would be, knowing that the processors have a habit of generating quite a bit of heat, so used &lt;a href=&#34;https://pypi.org/project/stressberry/&#34;&gt;stressberry&lt;/a&gt;, &lt;a href=&#34;https://github.com/akopytov/sysbench&#34;&gt;sysbench&lt;/a&gt;, openssl&amp;rsquo;s benchmarks and 7-Zip&amp;rsquo;s benchmark to understand a little better what I gain from each stage in the evolution from Pi with no cooling, to Pi with passive cooling from the heatsink to Pi with heatsink and fan.&lt;/p&gt;
+&lt;p&gt;First, invoking stressberry with &lt;code&gt;stressberry-run --duration 900 --idle 120&lt;/code&gt; to have the processor just do a lot of work that doesn&amp;rsquo;t amount to anything but generating heat:&lt;/p&gt;
+
+  &lt;figure class=&#34;left&#34; &gt;
+    &lt;img src=&#34;sb_no_oc_no_heatsink_no_fan.png&#34;   /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Stressberry run with no overclocking, no heatsink and no fan&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;We see that we get a fair amount of throttling at around 80 degree Celsius and upwards: at that point, the processor becomes throttled in an attempt to prevent any thermal damage. Bearing in mind that this is - at the moment, at least - how a Pi comes from the factory, the need for some sort of cooling system becomes clear.&lt;/p&gt;
+&lt;p&gt;Having installed the heatsink, I ran the same stressberry test:&lt;/p&gt;
+
+  &lt;figure class=&#34;left&#34; &gt;
+    &lt;img src=&#34;sb_no_oc_heatsink_no_fan.png&#34;   /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Stressberry run with no overclocking, heatsink fitted and no fan&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;Once our test starts at 120 seconds in, the CPU hits the stock 1.8GHz and doesn&amp;rsquo;t become throttled at any point during the test. It also doesn&amp;rsquo;t hit anywhere near the same temperatures: having a fairly sizeable chunk of metal on top of the processor draws heat away from it. Who would have thought.&lt;/p&gt;
+&lt;p&gt;While the heatsink seems sufficient at 1.8GHz, I was curious to see what effect turning the fan on would have on the thermals of the Pi. Running the same stressberry test again:&lt;/p&gt;
+
+  &lt;figure class=&#34;left&#34; &gt;
+    &lt;img src=&#34;sb_no_oc_heatsink_fan.png&#34;   /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Stressberry run with no overclocking, heatsink fitted and fan turned on&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;It turns out that the combination of a large metal block to transfer the heat away from the processor combined with using the movement of air to get the heat away from the heatsink is a tried-and-true combination for cooling CPUs. Given the fetishisation of the enthusiast community for water-cooling, this may be news to some. With the fan turned on, our temperatures never break 50 degrees Celsius.&lt;/p&gt;
+&lt;p&gt;But what does this mean for &amp;lsquo;real-world&amp;rsquo; performance? Well, as close as we can get to &amp;lsquo;real-world&amp;rsquo; performance with some synthetic benchmarks? For all values in the table below, higher is better.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Configuration&lt;/th&gt;
+&lt;th&gt;Sysbench 8-thread CPU test  (events/s)&lt;/th&gt;
+&lt;th&gt;7-Zip multithreaded benchmark Decompressing (MIPS)&lt;/th&gt;
+&lt;th&gt;7-Zip multithreaded benchmark Compressing (MIPS)&lt;/th&gt;
+&lt;th&gt;OpenSSL SHA256 on 16k blocks (1000s of bytes/s)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;No heatsink, no fan&lt;/td&gt;
+&lt;td&gt;7141.39&lt;/td&gt;
+&lt;td&gt;7194&lt;/td&gt;
+&lt;td&gt;3466&lt;/td&gt;
+&lt;td&gt;170033.15k&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Heatsink, no fan&lt;/td&gt;
+&lt;td&gt;7953.79&lt;/td&gt;
+&lt;td&gt;7967&lt;/td&gt;
+&lt;td&gt;3760&lt;/td&gt;
+&lt;td&gt;187899.19k&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Heatsink and fan&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;7961.10&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;8083&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3920&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;189683.03k&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We see that for each of the tests, heatsink outperforms non-heatsink configurations by around 5-10% in each of these tests, with fan and heatsink configurations performing marginally better again, but perhaps only within a margin of error. This is broadly what we&amp;rsquo;d expect to see given the fact that we don&amp;rsquo;t see any throttling in any configuration that involves the heatsink.&lt;/p&gt;
+&lt;p&gt;If I&amp;rsquo;m using the Pi as my primary computer, I want to give it the best possible chance that I can to get the most that I can out of the board. With that in mind, and with how trivial it is to overclock the Pi with little more than a couple of changes to a config file, I went ahead and added the following to the Pi&amp;rsquo;s &lt;code&gt;/boot/config.txt&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;arm_freq=2200
+gpu_freq=750
+over_voltage=8
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This represents an overclock of 22.22% from the stock clock speeds of the Pi at the cost of applying a little more voltage and perhaps drawing a little more power from the wall: if you&amp;rsquo;re doing this, please make sure you&amp;rsquo;re using a decent power supply. I then ran stressberry again to ensure that the now-definitely-hotter CPU was still running in a way that wouldn&amp;rsquo;t lead to it being throttled:&lt;/p&gt;
+
+  &lt;figure class=&#34;left&#34; &gt;
+    &lt;img src=&#34;sb_oc_heatsink_fan.png&#34;   /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Stressberry run with overclocking, heatsink and fan&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;Remarkably, even with the overclock, this cooling solution only goes around 10 degrees Celsius hotter, and the Pi seems to run stable with it. We appear to have gained a theoretical 20% performance improvement for &amp;lsquo;free&amp;rsquo;! Running our benchmarks again:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Configuration&lt;/th&gt;
+&lt;th&gt;Sysbench 8-thread CPU test  (events/s)&lt;/th&gt;
+&lt;th&gt;7-Zip multithreaded benchmark Decompressing (MIPS)&lt;/th&gt;
+&lt;th&gt;7-Zip multithreaded benchmark Compressing (MIPS)&lt;/th&gt;
+&lt;th&gt;OpenSSL SHA256 on 16k blocks (1000s of bytes/s)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Heatsink and fan&lt;/td&gt;
+&lt;td&gt;7961.10&lt;/td&gt;
+&lt;td&gt;8083&lt;/td&gt;
+&lt;td&gt;3920&lt;/td&gt;
+&lt;td&gt;189683.03k&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Heatsink and fan, overclocked&lt;/td&gt;
+&lt;td&gt;8756.07&lt;/td&gt;
+&lt;td&gt;8808&lt;/td&gt;
+&lt;td&gt;3986&lt;/td&gt;
+&lt;td&gt;208939.69k&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;So maybe not quite 20%, but ~10% is nothing to be scoffed at for the price of a configuration file change!&lt;/p&gt;
+&lt;h3 id=&#34;appendix&#34;&gt;Appendix&lt;/h3&gt;
+&lt;p&gt;The following commands were invoked for each of the tests:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sysbench&lt;/strong&gt;: &lt;code&gt;sysbench cpu --threads=8 --time=120 run&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7-Zip&lt;/strong&gt;: &lt;code&gt;7zr b&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenSSL&lt;/strong&gt;: &lt;code&gt;openssl speed -evp sha256&lt;/code&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
