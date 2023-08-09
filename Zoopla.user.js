@@ -69,14 +69,6 @@ function augment_listings_map() {
     var listing = document.querySelector('[data-testid="listing-card-portrait-mini"]');
     var listing_url = listing.getElementsByTagName('a')[0].href;
     fetch(listing_url, { headers: { 'Content-Type': 'text/html' } }).then(response => response.text()).then(data => get_data(data, listing));
-    try {
-        var num_bath = parseInt(listing.querySelector('[data-testid="bath"]').parentNode.parentNode.querySelector('[data-testid="text"]').textContent);
-        if (num_bath < 2) listing.style.backgroundColor = '#ffb3ba';
-        else listing.style.backgroundColor = '#baffc9';
-    }
-    catch (err) {
-        listing.style.backgroundColor = '#ffffba';
-    }
 }
 
 (function () {
@@ -85,14 +77,14 @@ function augment_listings_map() {
         mutations.forEach(function (mutation) {
             if (mutation.addedNodes.length != 0 && !called) {
                 try {
-                    console.log(mutation);
-                    if (mutation.addedNodes[0].innerHTML.includes('listing') || mutation.addedNodes[0].innerHTML.includes('data-testid="bath"')) {
+                    if (mutation.addedNodes[0].innerHTML.includes('listing') && mutation.addedNodes[0].localName == "div") {
                         if (document.URL.includes("/map/")) {
                             augment_listings_map();
                             called = true;
                         } else {
                             augment_listings_main();
-                            called = true
+                            console.log(mutation);
+                            called = true;
                         }
                     }
                 } catch (err) {
