@@ -1,7 +1,7 @@
 //==UserScript==
 // @name          Zoopla Search Better Maker
 // @namespace     https://anitabyte.xyz
-// @version       0.0.3
+// @version       0.0.4
 // @description   Show floor plans in search
 // @author        anitabyte
 // @run-at        document-idle
@@ -20,7 +20,7 @@ function get_data(response, listing) {
     var has_floorplan = ad_targeting["hasFloorplan"];
     var numBaths = listing_details["counts"]["numBathrooms"];
     var divs = listing.querySelectorAll("div");
-    divs.forEach(div => { console.log(div);
+    divs.forEach(div => { 
         if (numBaths >= 2) div.style.backgroundColor = "#238823";
         else if (numBaths == 0) div.style.backgroundColor = "#ffbf00";
         else div.style.backgroundColor = "#d2222d";
@@ -68,7 +68,6 @@ function augment_listings_main() {
 function augment_listings_map() {
     var listing = document.querySelector('[data-testid="listing-card-portrait-mini"]');
     var listing_url = listing.getElementsByTagName('a')[0].href;
-    console.log(listing_url);
     fetch(listing_url, { headers: { 'Content-Type': 'text/html' } }).then(response => response.text()).then(data => get_data(data, listing));
     try {
         var num_bath = parseInt(listing.querySelector('[data-testid="bath"]').parentNode.parentNode.querySelector('[data-testid="text"]').textContent);
@@ -84,14 +83,16 @@ function augment_listings_map() {
     var observer = new MutationObserver(function (mutations) {
         var called = false;
         mutations.forEach(function (mutation) {
-            if (mutation.addedNodes.length != 0) {
+            if (mutation.addedNodes.length != 0 && !called) {
                 try {
+                    console.log(mutation);
                     if (mutation.addedNodes[0].innerHTML.includes('listing') || mutation.addedNodes[0].innerHTML.includes('data-testid="bath"')) {
-                        if (document.URL.includes("/map/") && !called) {
+                        if (document.URL.includes("/map/")) {
                             augment_listings_map();
                             called = true;
                         } else {
                             augment_listings_main();
+                            called = true
                         }
                     }
                 } catch (err) {
@@ -104,5 +105,4 @@ function augment_listings_map() {
     });
     observer.observe(document, { subtree: true, childList: true });
     'use strict';
-    setTimeout(augment_listings_main(), 1500);
 })();
