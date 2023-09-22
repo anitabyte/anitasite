@@ -6,7 +6,27 @@
     <description>Recent content in Tags on anitabyte</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Jul 2023 22:36:37 +0100</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Sep 2023 12:36:37 +0100</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arm64</title>
+      <link>/tags/arm64/</link>
+      <pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
+      
+      <guid>/tags/arm64/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>pi</title>
+      <link>/tags/pi/</link>
+      <pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
+      
+      <guid>/tags/pi/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>benchmarks</title>
       <link>/tags/benchmarks/</link>
@@ -23,16 +43,6 @@
       <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
       
       <guid>/tags/cooling/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>pi</title>
-      <link>/tags/pi/</link>
-      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
-      
-      <guid>/tags/pi/</guid>
       <description></description>
       <content></content>
     </item>
