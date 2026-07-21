@@ -17,23 +17,53 @@
 
 
 
+  
+  <link rel="stylesheet" href="/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
 
   
+  <link rel="stylesheet" href="/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
   
+  <link rel="stylesheet" href="/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
   
+  <link rel="stylesheet" href="/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
   
+  <link rel="stylesheet" href="/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
   
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+<link rel="stylesheet" href="/terminal.css">
 
 
 
 
-
-
-
-  <link rel="shortcut icon" href="/img/theme-colors/pink.png">
-  <link rel="apple-touch-icon" href="/img/theme-colors/pink.png">
-
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
 <meta name="twitter:card" content="summary" />
@@ -68,11 +98,27 @@
 
 
 
+
+<script>
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.anitabyte.xyz/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
 </head>
-<body class="pink">
+<body>
 
 
-<div class="container center headings--one-size">
+<div class="container center">
 
   <header class="header">
   <div class="header__inner">
@@ -94,10 +140,6 @@
           <li><a href="/about">About</a></li>
         
       
-        
-          <li><a href="/showcase">Showcase</a></li>
-        
-      
       
     </ul>
   </li>
@@ -115,10 +157,6 @@
           <li><a href="/about" >About</a></li>
         
       
-        
-          <li><a href="/showcase" >Showcase</a></li>
-        
-      
     
   </ul>
 </nav>
@@ -133,7 +171,7 @@
   <h1 class="post-title">
     <a href="/posts/pi_any_means_necessary_1/">Pi Any Means Necessary #1: Overclocking and cooling</a>
   </h1>
-  <div class="post-meta"><time class="post-date">2023-07-19</time><span class="post-reading-time">6 min read (1128 words)</span></div>
+  <div class="post-meta"><time class="post-date">2023-07-19</time><span class="post-reading-time">6 min read (1161 words)</span></div>
 
   
     <span class="post-tags">
@@ -158,72 +196,63 @@
 <p>Over the years, I&rsquo;ve been exposed to an awfully large number of novel homes for the Raspberry Pi, and I couldn&rsquo;t be more susceptible to the idea of a cute home for my little computing pal. I&rsquo;d come across the <a href="https://wiki.52pi.com/index.php?title=ZP-0130">52Pi ZP-0130</a>, a case for the Pi that includes a case with an OLED screen on the front of it, a cooler (the <a href="https://thepihut.com/products/ice-tower-raspberry-pi-4-cpu-cooler">52Pi ICE Tower</a>, replete with an RGB fan) for the Pi and a board that would allow me to connect a SATA M.2 SSD - one of which I had hanging around in a drawer with no idea where it had come from.</p>
 <p>I was curious to see what the benefit of having such a large heatsink and fan on the Pi would be, knowing that the processors have a habit of generating quite a bit of heat, so used <a href="https://pypi.org/project/stressberry/">stressberry</a>, <a href="https://github.com/akopytov/sysbench">sysbench</a>, openssl&rsquo;s benchmarks and 7-Zip&rsquo;s benchmark to understand a little better what I gain from each stage in the evolution from Pi with no cooling, to Pi with passive cooling from the heatsink to Pi with heatsink and fan.</p>
 <p>First, invoking stressberry with <code>stressberry-run --duration 900 --idle 120</code> to have the processor just do a lot of work that doesn&rsquo;t amount to anything but generating heat:</p>
-
-  <figure class="left" >
-    <img src="sb_no_oc_no_heatsink_no_fan.png"   />
-    
-      <figcaption class="center" >Stressberry run with no overclocking, no heatsink and no fan</figcaption>
-    
-  </figure>
-
+<figure><img src="/posts/pi_any_means_necessary_1/sb_no_oc_no_heatsink_no_fan.png"
+			alt="Stressberry run with no overclocking, no heatsink and no fan"><figcaption>
+			<h4>Stressberry run with no overclocking, no heatsink and no fan</h4><p>Stressberry run with no overclocking, no heatsink and no fan</p>
+		</figcaption>
+</figure>
 
 <p>We see that we get a fair amount of throttling at around 80 degree Celsius and upwards: at that point, the processor becomes throttled in an attempt to prevent any thermal damage. Bearing in mind that this is - at the moment, at least - how a Pi comes from the factory, the need for some sort of cooling system becomes clear.</p>
 <p>Having installed the heatsink, I ran the same stressberry test:</p>
-
-  <figure class="left" >
-    <img src="sb_no_oc_heatsink_no_fan.png"   />
-    
-      <figcaption class="center" >Stressberry run with no overclocking, heatsink fitted and no fan</figcaption>
-    
-  </figure>
-
+<figure><img src="/posts/pi_any_means_necessary_1/sb_no_oc_heatsink_no_fan.png"
+			alt="Stressberry run with no overclocking, heatsink fitted and no fan"><figcaption>
+			<h4>Stressberry run with no overclocking, heatsink fitted and no fan</h4><p>Stressberry run with no overclocking, heatsink fitted and no fan</p>
+		</figcaption>
+</figure>
 
 <p>Once our test starts at 120 seconds in, the CPU hits the stock 1.8GHz and doesn&rsquo;t become throttled at any point during the test. It also doesn&rsquo;t hit anywhere near the same temperatures: having a fairly sizeable chunk of metal on top of the processor draws heat away from it. Who would have thought.</p>
 <p>While the heatsink seems sufficient at 1.8GHz, I was curious to see what effect turning the fan on would have on the thermals of the Pi. Running the same stressberry test again:</p>
-
-  <figure class="left" >
-    <img src="sb_no_oc_heatsink_fan.png"   />
-    
-      <figcaption class="center" >Stressberry run with no overclocking, heatsink fitted and fan turned on</figcaption>
-    
-  </figure>
-
+<figure><img src="/posts/pi_any_means_necessary_1/sb_no_oc_heatsink_fan.png"
+			alt="Stressberry run with no overclocking, heatsink fitted and fan turned on"><figcaption>
+			<h4>Stressberry run with no overclocking, heatsink fitted and no fan</h4><p>Stressberry run with no overclocking, heatsink fitted and fan turned on</p>
+		</figcaption>
+</figure>
 
 <p>It turns out that the combination of a large metal block to transfer the heat away from the processor combined with using the movement of air to get the heat away from the heatsink is a tried-and-true combination for cooling CPUs. Given the fetishisation of the enthusiast community for water-cooling, this may be news to some. With the fan turned on, our temperatures never break 50 degrees Celsius.</p>
 <p>But what does this mean for &lsquo;real-world&rsquo; performance? Well, as close as we can get to &lsquo;real-world&rsquo; performance with some synthetic benchmarks? For all values in the table below, higher is better.</p>
 <table>
-<thead>
-<tr>
-<th>Configuration</th>
-<th>Sysbench 8-thread CPU test  (events/s)</th>
-<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
-<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
-<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>No heatsink, no fan</td>
-<td>7141.39</td>
-<td>7194</td>
-<td>3466</td>
-<td>170033.15k</td>
-</tr>
-<tr>
-<td>Heatsink, no fan</td>
-<td>7953.79</td>
-<td>7967</td>
-<td>3760</td>
-<td>187899.19k</td>
-</tr>
-<tr>
-<td>Heatsink and fan</td>
-<td><strong>7961.10</strong></td>
-<td><strong>8083</strong></td>
-<td><strong>3920</strong></td>
-<td><strong>189683.03k</strong></td>
-</tr>
-</tbody>
+	<thead>
+			<tr>
+					<th>Configuration</th>
+					<th>Sysbench 8-thread CPU test  (events/s)</th>
+					<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
+					<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
+					<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>No heatsink, no fan</td>
+					<td>7141.39</td>
+					<td>7194</td>
+					<td>3466</td>
+					<td>170033.15k</td>
+			</tr>
+			<tr>
+					<td>Heatsink, no fan</td>
+					<td>7953.79</td>
+					<td>7967</td>
+					<td>3760</td>
+					<td>187899.19k</td>
+			</tr>
+			<tr>
+					<td>Heatsink and fan</td>
+					<td><strong>7961.10</strong></td>
+					<td><strong>8083</strong></td>
+					<td><strong>3920</strong></td>
+					<td><strong>189683.03k</strong></td>
+			</tr>
+	</tbody>
 </table>
 <p>We see that for each of the tests, heatsink outperforms non-heatsink configurations by around 5-10% in each of these tests, with fan and heatsink configurations performing marginally better again, but perhaps only within a margin of error. This is broadly what we&rsquo;d expect to see given the fact that we don&rsquo;t see any throttling in any configuration that involves the heatsink.</p>
 <p>If I&rsquo;m using the Pi as my primary computer, I want to give it the best possible chance that I can to get the most that I can out of the board. With that in mind, and with how trivial it is to overclock the Pi with little more than a couple of changes to a config file, I went ahead and added the following to the Pi&rsquo;s <code>/boot/config.txt</code>:</p>
@@ -231,45 +260,42 @@
 gpu_freq=750
 over_voltage=8
 </code></pre><p>This represents an overclock of 22.22% from the stock clock speeds of the Pi at the cost of applying a little more voltage and perhaps drawing a little more power from the wall: if you&rsquo;re doing this, please make sure you&rsquo;re using a decent power supply. I then ran stressberry again to ensure that the now-definitely-hotter CPU was still running in a way that wouldn&rsquo;t lead to it being throttled:</p>
-
-  <figure class="left" >
-    <img src="sb_oc_heatsink_fan.png"   />
-    
-      <figcaption class="center" >Stressberry run with overclocking, heatsink and fan</figcaption>
-    
-  </figure>
-
+<figure><img src="/posts/pi_any_means_necessary_1/sb_oc_heatsink_fan.png"
+			alt="Stressberry run with overclocking, heatsink and fan"><figcaption>
+			<h4>Stressberry run with overclocking, heatsink and fan</h4><p>Stressberry run with overclocking, heatsink and fan</p>
+		</figcaption>
+</figure>
 
 <p>Remarkably, even with the overclock, this cooling solution only goes around 10 degrees Celsius hotter, and the Pi seems to run stable with it. We appear to have gained a theoretical 20% performance improvement for &lsquo;free&rsquo;! Running our benchmarks again:</p>
 <table>
-<thead>
-<tr>
-<th>Configuration</th>
-<th>Sysbench 8-thread CPU test  (events/s)</th>
-<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
-<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
-<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Heatsink and fan</td>
-<td>7961.10</td>
-<td>8083</td>
-<td>3920</td>
-<td>189683.03k</td>
-</tr>
-<tr>
-<td>Heatsink and fan, overclocked</td>
-<td>8756.07</td>
-<td>8808</td>
-<td>3986</td>
-<td>208939.69k</td>
-</tr>
-</tbody>
+	<thead>
+			<tr>
+					<th>Configuration</th>
+					<th>Sysbench 8-thread CPU test  (events/s)</th>
+					<th>7-Zip multithreaded benchmark Decompressing (MIPS)</th>
+					<th>7-Zip multithreaded benchmark Compressing (MIPS)</th>
+					<th>OpenSSL SHA256 on 16k blocks (1000s of bytes/s)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Heatsink and fan</td>
+					<td>7961.10</td>
+					<td>8083</td>
+					<td>3920</td>
+					<td>189683.03k</td>
+			</tr>
+			<tr>
+					<td>Heatsink and fan, overclocked</td>
+					<td>8756.07</td>
+					<td>8808</td>
+					<td>3986</td>
+					<td>208939.69k</td>
+			</tr>
+	</tbody>
 </table>
 <p>So maybe not quite 20%, but ~10% is nothing to be scoffed at for the price of a configuration file change!</p>
-<h3 id="appendix">Appendix<a href="#appendix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="appendix">Appendix<a href="#appendix" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>The following commands were invoked for each of the tests:</p>
 <p><strong>Sysbench</strong>: <code>sysbench cpu --threads=8 --time=120 run</code></p>
 <p><strong>7-Zip</strong>: <code>7zr b</code></p>
@@ -280,22 +306,21 @@ over_voltage=8
   
     
 <div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="/posts/pi_any_means_necessary_2/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Pi Any Means Necessary #2: Software availability</span>
-            </a>
-        </span>
-        
-        
-    </div>
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+      <a href="/posts/pi_any_means_necessary_2/" class="button inline prev">
+        &lt; [<span class="button__text">Pi Any Means Necessary #2: Software availability</span>]
+      </a>
+    
+    
+    
+  </div>
 </div>
+
 
   
 
@@ -312,9 +337,9 @@ over_voltage=8
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
     
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a>, modified by anitabyte</span>
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
       </div>
   </div>
 </footer>

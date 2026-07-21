@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>An Ill-Advised Project #1 :: anitabyte</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The introduction to smoke-signals and leave-an-impression, a pair of tools designed to get data about music you&#39;re listening to and put it on an RGB matrix" />
+<meta name="keywords" content="rust, python, listenbrainz, pi, pi pico, rgb matrix, rgb" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/ill_advised_project_1/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+<link rel="stylesheet" href="/terminal.css">
+
+
+
+
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="An Ill-Advised Project #1">
+<meta property="og:description" content="The introduction to smoke-signals and leave-an-impression, a pair of tools designed to get data about music you&#39;re listening to and put it on an RGB matrix" />
+<meta property="og:url" content="/posts/ill_advised_project_1/" />
+<meta property="og:site_name" content="anitabyte" />
+
+  <meta property="og:image" content="/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2026-07-17 19:00:00 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.anitabyte.xyz/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    anitabyte
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/ill_advised_project_1/">An Ill-Advised Project #1</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2026-07-17</time><span class="post-reading-time">25 min read (5128 words)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/rust/">rust</a>&nbsp;
+      
+      #<a href="/tags/python/">python</a>&nbsp;
+      
+      #<a href="/tags/listenbrainz/">listenbrainz</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>I am easily influenced, as much as I will always want to claim otherwise. One such occasion was when I saw Instagram user <a href="https://www.instagram.com/reel/DZ27tTTRosE/">@mewtru&rsquo;s reel</a> where they had created an LED matrix that displayed spinning album art from Spotify. To get an idea of how targeted to my interests this is, I saw it independently and then had two people I know show me the reel: it&rsquo;s music, flashing lights and computers and I am hideously typecast in life.</p>
+<p>I&rsquo;ve recently been dealing with a newly diagnosed (but, if I&rsquo;m being honest with myself, <em>long</em> suspected) illness, with an acute summer viral infection on top and I&rsquo;ve been looking for distraction <a href="https://www.england.nhs.uk/diabetes/treatment-care/diabetes-remission/">from the fact that I can&rsquo;t eat solid food for three months</a>. What better time to throw myself into something that has no real practical application but will soak up time and mental effort from thinking about just how many unethical things I would do for a pizza?</p>
+<p>But there&rsquo;s so much about the original that just doesn&rsquo;t sit well with me and my preferences. First of all, we have the reliance upon Spotify for the source of both music and album art: I&rsquo;m not a Spotify user on account of wanting own my media in general and their <a href="https://virpp.com/hello/music-streaming-payouts-comparison-a-guide-for-musicians/">pathetic, even among terrible competitors</a> payouts for artists. Given the diversity of the ways that I listen to music (local MP3s/FLAC; Amazon Music; other streaming sources), making use of the fact that I obsessively log everything to <a href="https://listenbrainz.org/user/finallyworn/">ListenBrainz</a> makes sense, as well as relying on <a href="https://musicbrainz.org/">MusicBrainz</a> for canonicalisation of metadata differing depending on the source of the music. With those datasources there somewhat by default, the use of the <a href="https://coverartarchive.org/">Cover Art Archive</a> for the cover art itself was somewhat of a gimme: if I have the data from MusicBrainz anyway, why not use a datasource for cover art that is indexed on that same MusicBrainz data?</p>
+<p>Second, while I appreciate the appeal of a dynamic visual, I&rsquo;m content (for now, at least) with just being able to visualise the album art for whatever it is that I&rsquo;m listening to. A static image will more than do for me and won&rsquo;t require any image processing on the thing driving the RGB matrix. Given that the hardware that will be driving the matrix won&rsquo;t be too capable, I&rsquo;d like to keep it simple for now.</p>
+<p>There&rsquo;s also the aspect of the hardware used: the referenced reel sees the use of a Raspberry Pi Zero W/2 W. I don&rsquo;t know what they did to obtain one, but you can&rsquo;t manage it for love nor money at the moment. Well, money is probably going to do the job, but I don&rsquo;t particularly value the idea of spending £30+ for something that should retail at half that. With that in mind, I thought I&rsquo;d try getting the readily available <a href="https://thepihut.com/products/raspberry-pi-pico-2-w">Pi Pico 2 W</a>. The limited memory and processing power of the Pico would restrict it to just being responsible for handling putting the data that we&rsquo;d get and manipulate from <em>somewhere</em> else onto the 64x64 RGB matrix I&rsquo;d picked out for display. The Pico W series have all of the GPIO and network hardware that we should need to perform that task. The design in my head ended up something like the below:</p>
+<p><img src="/posts/ill_advised_project_1/images/design.png" alt="Design overview image"></p>
+
+<details>
+	<summary>PlantUML source</summary>
+	<pre tabindex="0"><code class="language-plantuml" data-lang="plantuml">@startuml
+interface &#34;RGB Matrix\nvia GPIO&#34; as RGB
+
+RGB - [Pi Pico 2W]
+[Pi Pico 2W] ..&gt; TCP : use
+[Server Running\nAlbum Art application] - TCP
+[Server Running\nAlbum Art application] ..&gt; HTTPS : use
+[ListenBrainz] - HTTPS
+[MusicBrainz] -- HTTPS
+[Cover Art Archive] -- HTTPS
+
+@enduml
+</code></pre></details>
+
+<h2 id="naming-one-of-the-two-hard-things">Naming, one of the <a href="https://martinfowler.com/bliki/TwoHardThings.html">Two Hard Things</a><a href="#naming-one-of-the-two-hard-things" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>For the first time in my life, names just <em>came to me</em> as I looked over what I&rsquo;d brought home from <a href="https://www.fopp.com/">Fopp</a> on a given day. Between Phoebe Bridgers&rsquo;s <em>Stranger in the Alps</em> and Sabrina Carpenter&rsquo;s <em>Short n&rsquo; Sweet</em>, the combination of <code>smoke-signals</code> for the part that goes and gets information (signals, if you will) from various services to put together a message for the microcontroller and <code>make-an-impression</code> for the bit that handles the lights and <em>makes an impression</em> on the world, with light, felt right.</p>
+<p>Fuck off, I entertain myself and that&rsquo;s all that really matters here. There were also copies of PJ Harvey&rsquo;s <em>Rid of Me</em> and Hole&rsquo;s <em>Live Through This</em> in that pile, so the connections could have been even more torturous had I so decided.</p>
+<h2 id="the-first-cut-of-smoke-signals">The first cut of <code>smoke-signals</code><a href="#the-first-cut-of-smoke-signals" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>One of the benefits of the approach that I&rsquo;d landed on was that I wasn&rsquo;t dependent on any hardware to get started on the half of the project that would be the process of identifying what I was listening to, what the corresponding MusicBrainz release ID (<code>mbid</code>) was and looking up the <code>mbid</code> in the Cover Art Archive and then retrieving the album art. From there, we could resize the image to the 64x64 required by the matrix and dump the image data to some data format that we could then display on the matrix. We&rsquo;d also have to run a server to, well, serve that information to the Pi Pico-based client.</p>
+<p>I had a decision to make about the tech stack that I&rsquo;d use to make this, and it got made pretty easily: there&rsquo;s a very obvious need for concurrency in this project between the getting and serving data aspects of <code>smoke-signals</code>, I like that Rust has <a href="https://rustacean.net/">Ferris the crab</a> and I&rsquo;ve not done an awful lot of concurrent Rust in the <code>async</code> style. That, coupled with me not really knowing <em>where</em> I&rsquo;d end up running the server and the general strength in the Rust ecosystem for cross-compilation between processor architectures, made the decision all the more simple. We&rsquo;d be using Rust with the <a href="https://tokio.rs/">Tokio</a> async runtime.</p>
+<h3 id="so-what-are-we-building">So what are we building?<a href="#so-what-are-we-building" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<ol>
+<li>A process that will poll ListenBrainz to see what I&rsquo;m listening to, fetch album art from an album art provider, resize it and put it in a format we can consume on a microcontroller</li>
+</ol>
+<ul>
+<li>An async server loop to handle incoming connections from the microcontroller</li>
+<li>An async polling loop to see when the currently playing song has changed, and on change go and fetch the new metadata and album art</li>
+<li>Some means of getting data between these two processes</li>
+</ul>
+<ol start="2">
+<li>A TCP server for a client to connect to receive the data obtained in (1) and drive the RGB matrix</li>
+</ol>
+<h3 id="hurdles-learning-async-my-brain-mainly">Hurdles learning async (my brain, mainly)<a href="#hurdles-learning-async-my-brain-mainly" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Anyone who has ever known me, and especially those who have worked with me, are probably aware that I am terrible at reasoning about time. Given that async programming is pretty much all about thing <em>x</em> doing <em>y</em> at t<sub>1</sub> until t<sub>3</sub>, and allowing to do thing <em>a</em> to <em>b</em> until t<sub>2</sub> while we wait for <em>x</em> to finish, I am not mentally built for this. My lack of ability to think about time reared its head in the first iteration of the loop for handling TCP connections.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">server</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> listener <span style="color:#f92672">=</span> TcpListener::bind(<span style="color:#e6db74">&#34;127.0.0.1:8080&#34;</span>).<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> (socket, _) <span style="color:#f92672">=</span> listener.accept().<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>        handle_conn(socket).<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">handle_conn</span>(<span style="color:#66d9ef">mut</span> socket: <span style="color:#a6e22e">TcpStream</span>) {
+</span></span><span style="display:flex;"><span>    socket.write_all(<span style="color:#e6db74">&#34;test&#34;</span>.as_bytes()).<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[tokio::main]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> server <span style="color:#f92672">=</span> tokio::spawn(server());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> album_art <span style="color:#f92672">=</span> tokio::spawn(start_album_art_loop());
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">join!</span>(server, album_art);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you can&rsquo;t spot what&rsquo;s wrong with this, you&rsquo;re no better than me: please, self-flagellate. We spawn a two tasks: one for the loop that will go and fetch music metadata and one for the task to handle incoming TCP connections. In that server task, for every connection that comes in we call <code>handle_conn</code> and then <code>await</code> the socket write. If we have a number of connections coming in, we&rsquo;re going to experience delays in getting connections handled at best, an inability to connect at worst. Fortunately, doing a little better is quite easy with Tokio&rsquo;s predicates here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">server</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> listener <span style="color:#f92672">=</span> TcpListener::bind(<span style="color:#e6db74">&#34;127.0.0.1:8080&#34;</span>).<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> (socket, _) <span style="color:#f92672">=</span> listener.accept().<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// spawn a task for every new connection! Actually achieve concurrency!
+</span></span></span><span style="display:flex;"><span>        tokio::spawn(handle_conn(socket));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">handle_conn</span>(<span style="color:#66d9ef">mut</span> socket: <span style="color:#a6e22e">TcpStream</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">info!</span>(<span style="color:#e6db74">&#34;Connection accepted!&#34;</span>);
+</span></span><span style="display:flex;"><span>    socket.write_all(<span style="color:#e6db74">&#34;test&#34;</span>.as_bytes()).<span style="color:#66d9ef">await</span>.unwrap();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For a toy project where we&rsquo;re going to have (short term, at least), just one client, this probably doesn&rsquo;t matter at all. But for the <a href="https://en.wikipedia.org/wiki/Code_golf">code golf</a>-esque satisfaction of being able to say that the numbers coming out of my completely arbitrary performance tests are higher than they would be otherwise, it&rsquo;s definitely a worthwhile pursuit.</p>
+<h3 id="be-explicit-about-what-is-blocking-work">Be explicit about what is blocking work<a href="#be-explicit-about-what-is-blocking-work" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The only real bit of computation that we do in this flow is resizing the album art image that we retrieve, rotating it and converting the image data into a <code>Vec&lt;u8&gt;</code> array of bytes. This can be computationally expensive and the <code>image</code> crate I used for this is not async: if we ran this in Tokio&rsquo;s normal worker threads, we&rsquo;d have worker threads being blocked as these functions will never call <code>await</code> and will therefore never yield control of the thread to the scheduler (more detail on this in the <a href="https://docs.rs/tokio/latest/tokio/index.html#cpu-bound-tasks-and-blocking-code">Tokio docs</a>). Instead, this code gets run in a blocking thread, spawned on demand, allowing the pool of worker threads to continue to be scheduled and have tasks swapped in and out of processing by the Tokio runtime.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>tokio::task::spawn_blocking(<span style="color:#66d9ef">move</span> <span style="color:#f92672">||</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> img <span style="color:#f92672">=</span> ImageReader::new(Cursor::new(bytes.as_ref()))
+</span></span><span style="display:flex;"><span>            .with_guessed_format()<span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>            .decode()<span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// we have to rotate and flip for the output to come out right on the Matrix - which is Column-Major
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> resized_image <span style="color:#f92672">=</span> img
+</span></span><span style="display:flex;"><span>            .resize_to_fill(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, image::imageops::FilterType::Gaussian)
+</span></span><span style="display:flex;"><span>            .rotate90()
+</span></span><span style="display:flex;"><span>            .flipv();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> rgb_values <span style="color:#f92672">=</span> resized_image.to_rgb8().into_raw_bgr().clone();
+</span></span><span style="display:flex;"><span>        Ok(rgb_values)
+</span></span><span style="display:flex;"><span>    })
+</span></span></code></pre></div><h3 id="why-are-we-manipulating-the-images-the-way-that-we-are">Why are we manipulating the images the way that we are?<a href="#why-are-we-manipulating-the-images-the-way-that-we-are" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// We have to rotate and flip for the output to come out right on the Matrix - which is Column-Major
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> resized_image <span style="color:#f92672">=</span> img
+</span></span><span style="display:flex;"><span>    .resize_to_fill(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, image::imageops::FilterType::Gaussian)
+</span></span><span style="display:flex;"><span>    .rotate90()
+</span></span><span style="display:flex;"><span>    .flipv();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> rgb_values <span style="color:#f92672">=</span> resized_image.to_rgb8().into_raw_bgr().clone();
+</span></span></code></pre></div><p>As part of the image resizing, we rotate the image 90 degrees and flip it vertically. If we don&rsquo;t do this, we get a <code>Vec&lt;u8&gt;</code> of RGB values that is a representation of the image with the origin at the top left of the image, with each three bytes representing the next pixel to the right of the first until we reach the nth pixel, where that pixel is the width of the image. The next three bytes will represent the first pixel on the left on the second row of the image, and so forth. As the RGB matrix I&rsquo;m using for this project is column-major (as opposed to most image formats&rsquo; row-major encoding), we get a rotated and flipped image on the matrix if we don&rsquo;t do this.</p>
+<h3 id="data-formats-for-exchange-with-make-an-impression-or-look-not-everything-needs-to-be-fucking-json">Data formats for exchange with <code>make-an-impression</code> <em>or</em> look, not everything needs to be fucking JSON<a href="#data-formats-for-exchange-with-make-an-impression-or-look-not-everything-needs-to-be-fucking-json" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>I am, as a necessity of the technological landscape I&rsquo;ve spent most of my professional life in, unfortunately webdev-brained, and webdev-brained in a really <a href="https://12factor.net/">Twelve-Factor App</a>, RESTful-architecture-returning-JSON-from-endpoints-and-sometimes-XML-have-I-ever-mentioned-I-was-an-enterprise-architect kind of way. I&rsquo;d started <code>smoke-signals</code> with that mindset, and the <code>AlbumData</code> struct that I&rsquo;d initially written with the view of sending data to the client looked like the below, with me wanting to send the artist, recording and release data with a representation of the RGB values for each pixel of the 64x64 version of the album art that we create in the application (so three bytes for each pixel in a 64x64 grid, giving us exactly 12,288 bytes to ship):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">#[derive(Serialize, Debug, Clone)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AlbumData</span> {
+</span></span><span style="display:flex;"><span>    artist: String,
+</span></span><span style="display:flex;"><span>    recording: String,
+</span></span><span style="display:flex;"><span>    release: String,
+</span></span><span style="display:flex;"><span>    art: <span style="color:#a6e22e">Arc</span><span style="color:#f92672">&lt;</span>[<span style="color:#66d9ef">u8</span>]<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#[serde(skip_serializing)]</span>
+</span></span><span style="display:flex;"><span>    hash: String,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Rust&rsquo;s <code>serde</code> crate is intuitive to use and provides <code>derive</code> macros for serialisation and deserialisation of structs into <a href="https://serde.rs/#data-formats">any number of data formats</a>: it&rsquo;s very convenient, and I&rsquo;d already used it to marshal JSON from the endpoints I was calling into the structs I had created to map those data structures. I could get my struct converted into JSON for &lsquo;free&rsquo;, so why not?</p>
+<p>The &lsquo;good enough&rsquo; reason is that sending what is essentially an array of bytes as a JSON array of <code>int</code>s is wasteful and adds a decoding overhead at the receiving side that just isn&rsquo;t necessary. If I just have a tiny Pi Pico on the other side, why do I need to implement JSON decoding on it just to get a couple of strings and about 12kB of data out of a data structure? Given the length of the array that we&rsquo;d have, we&rsquo;d also be wasting 12,287 bytes in the transfer with <em>commas alone</em>.</p>
+<p>I&rsquo;ve had some experience in the past of dealing with the <a href="https://developer.garmin.com/fit/protocol/">Garmin FIT Protocol</a> and <a href="https://www.media.mit.edu/pia/Research/deepview/exif.html">EXIF segments in JPEGs</a>, and I was reminded of the idea (long, long storied in computing, I&rsquo;m aware) of just having a simple binary encoding that tells the recipient how long the message it should expect to process is, how long each field is and the content of that field should be sufficient to get us started. This should look a little different to our <code>AlbumData</code> struct: we need to specify the length of the message and its constituent parts. We end up with something like:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Data item</th>
+					<th>Length</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Total Message Length</td>
+					<td>16-bits/2-bytes</td>
+					<td>Tells the client the full length of one message</td>
+			</tr>
+			<tr>
+					<td>Artist length</td>
+					<td>8-bits/1-byte</td>
+					<td>Tells the client the length of the artist field</td>
+			</tr>
+			<tr>
+					<td>Artist field</td>
+					<td>n-bytes</td>
+					<td>Tells the client the artist name</td>
+			</tr>
+			<tr>
+					<td>Release length</td>
+					<td>8-bits/1-byte</td>
+					<td>Tells the client the length of the album field</td>
+			</tr>
+			<tr>
+					<td>Release field</td>
+					<td>n-bytes</td>
+					<td>Tells the client the album name</td>
+			</tr>
+			<tr>
+					<td>Album art length</td>
+					<td>16-bits/2-bytes</td>
+					<td>Tells the client the length of the album art field</td>
+			</tr>
+			<tr>
+					<td>Album art field</td>
+					<td>n-bytes</td>
+					<td>It&rsquo;s the album art in RGB format</td>
+			</tr>
+	</tbody>
+</table>
+<p>And the implementation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">AlbumData</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// we ended up trimming some of the data fields from v0.0.0.1 as they weren&#39;t used
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> artist: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> release: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> art: <span style="color:#a6e22e">Arc</span><span style="color:#f92672">&lt;</span>[<span style="color:#66d9ef">u8</span>]<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">MessageData</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> total_len: <span style="color:#66d9ef">u16</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> artist_len: <span style="color:#66d9ef">u8</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> artist: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> release_len: <span style="color:#66d9ef">u8</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> release: String,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> art_len: <span style="color:#66d9ef">u16</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pub</span> art: <span style="color:#a6e22e">Arc</span><span style="color:#f92672">&lt;</span>[<span style="color:#66d9ef">u8</span>]<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> From<span style="color:#f92672">&lt;</span>AlbumData<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">for</span> MessageData {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">from</span>(album_data: <span style="color:#a6e22e">AlbumData</span>) -&gt; <span style="color:#a6e22e">MessageData</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> artist_len <span style="color:#f92672">=</span> album_data.artist.len() <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u8</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> artist: String <span style="color:#f92672">=</span> album_data.artist;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> release_len <span style="color:#f92672">=</span> album_data.release.len() <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u8</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> release <span style="color:#f92672">=</span> album_data.release;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> art_len: <span style="color:#66d9ef">u16</span> <span style="color:#f92672">=</span> album_data.art.len() <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u16</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> total_len <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> size_of::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u16</span><span style="color:#f92672">&gt;</span>() <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u16</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">+</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> size_of::<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span>() <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u16</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">+</span> art_len
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">+</span> artist_len <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u16</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">+</span> release_len <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">u16</span>;
+</span></span><span style="display:flex;"><span>        MessageData {
+</span></span><span style="display:flex;"><span>            total_len,
+</span></span><span style="display:flex;"><span>            artist_len,
+</span></span><span style="display:flex;"><span>            artist,
+</span></span><span style="display:flex;"><span>            release_len,
+</span></span><span style="display:flex;"><span>            release,
+</span></span><span style="display:flex;"><span>            art_len,
+</span></span><span style="display:flex;"><span>            art: <span style="color:#a6e22e">album_data</span>.art,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">impl</span> From<span style="color:#f92672">&lt;</span>MessageData<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">for</span> Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">from</span>(md: <span style="color:#a6e22e">MessageData</span>) -&gt; Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> ret_vec: Vec<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">u8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> Vec::with_capacity(md.total_len <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">usize</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// it&#39;s customary to send bytes over the network big-endian irrespective of recipient endianness
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> total_len <span style="color:#f92672">=</span> md.total_len.to_be_bytes();
+</span></span><span style="display:flex;"><span>        ret_vec.extend_from_slice(<span style="color:#f92672">&amp;</span>total_len);
+</span></span><span style="display:flex;"><span>        ret_vec.push(md.artist_len);
+</span></span><span style="display:flex;"><span>        ret_vec.extend_from_slice(md.artist.as_bytes());
+</span></span><span style="display:flex;"><span>        ret_vec.push(md.release_len);
+</span></span><span style="display:flex;"><span>        ret_vec.extend_from_slice(md.release.as_bytes());
+</span></span><span style="display:flex;"><span>        ret_vec.extend_from_slice(<span style="color:#f92672">&amp;</span>md.art_len.to_be_bytes());
+</span></span><span style="display:flex;"><span>        ret_vec.extend_from_slice(<span style="color:#f92672">&amp;</span>md.art);
+</span></span><span style="display:flex;"><span>        ret_vec
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Are there problems with this? Yes. If post-rock comes back into vogue and we end up with people taking up <a href="https://en.wikipedia.org/wiki/Godspeed_You!_Black_Emperor">Godspeed You! Black Emperor</a>&rsquo;s penchant for long album titles, one byte might not be enough to send the whole title in the message. But for now <em>Lift Your Skinny Fists Like Antennas To Heaven</em> is only 46 characters and we&rsquo;re safe. I&rsquo;m choosing to ignore, for now, the horror of multi-byte unicode characters because I only have one life. For my purposes as an idiot scratching his own itches, we can live with this. I&rsquo;ve mentioned a couple of times that I know that the size of the album art will always be 12,288 bytes: then why am I sending the length? <em>Future proofing in case I get a 128x128 RGB matrix</em>, I told myself, before doing the maths and realising that 49,152 is also outside of the bounds of a 16-bit integer. Maybe I&rsquo;ll get something smaller.</p>
+<p>The <a href="https://doc.rust-lang.org/std/convert/trait.From.html"><code>From</code> trait</a> in Rust&rsquo;s <code>std::convert</code> crate is pretty cool: by only defining a <code>From</code> method for a struct, you get a way to convert between two types both ways because of how the generic <code>Into</code> trait is implemented in the standard library. It&rsquo;s not particularly relevant here, as we&rsquo;re just emitting this data and not looking to receive it, but it&rsquo;s a neat feature.</p>
+<h3 id="least-recently-used-caching-rather-than-caching-everything-forever">Least Recently Used caching, rather than caching everything forever<a href="#least-recently-used-caching-rather-than-caching-everything-forever" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>I&rsquo;d gone into this project either 1) not thinking too much about the <em>strictly</em> best ways to do a lot of things and 2) not capable of much thought as I was having a simply great time with my meat prison. I had, however, had the good idea of caching the album art once I&rsquo;d fetched it to speed up the display of album art on the  RGB matrix by bypassing the serial network calls required to go from Now Playing message retrieved from ListenBrainz to an album art download. I had not, however, thought about the fact that using just a bare <code>HashMap</code> would eventually - if the process were to run for long enough - lead to me having a potentially huge hashmap full of binary image data. Imagine if I got to the point that my 128GB of RAM on my desktop was completely full with album art, 12kB at a time? A hellish thought.</p>
+<p>So we go from:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> cache: <span style="color:#a6e22e">HashMap</span><span style="color:#f92672">&lt;</span>String, AlbumData<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> HashMap::new();
+</span></span></code></pre></div><p>To, with the help of the <a href="https://docs.rs/lru/latest/lru/"><code>lru</code> crate</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> cache: <span style="color:#a6e22e">LruCache</span><span style="color:#f92672">&lt;</span>String, AlbumData<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> LruCache::new(NonZeroUsize::new(<span style="color:#ae81ff">100</span>).unwrap());
+</span></span></code></pre></div><p>We now have a bound of 100 entries on the in-memory cache - we shouldn&rsquo;t ever (hopefully) get ourselves into a situation where we&rsquo;re just pissing away memory as we&rsquo;re absent-mindedly listening to Amazon&rsquo;s Music awful autoplay playlists, while benefitting from our favourite intentional plays being retained in the cache so long as one out of one-hundred albums played is one of our faves.</p>
+<h3 id="we-have-hashing-algorithms-why-not-use-those-as-a-cache-key">We have hashing algorithms, why not use those as a cache key?<a href="#we-have-hashing-algorithms-why-not-use-those-as-a-cache-key" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">get_cache_key</span>(metadata: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">impl</span> MetadataProvider) -&gt; String {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// We only really care about &#39;releases&#39; from the point of view of album art - no need for get_recording_name
+</span></span></span><span style="display:flex;"><span>    hex::encode(<span style="color:#a6e22e">format!</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{}{}{}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>        metadata.get_artist_name(),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">CACHE_ENTRY_SEPARATOR</span>,
+</span></span><span style="display:flex;"><span>        metadata.get_release_name(),
+</span></span><span style="display:flex;"><span>    ))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>I&rsquo;m not sure if this is elegant or stupid: if we have an LRU cache, I also want to be able to repopulate the cache from local disk if we have an album that we&rsquo;ve played before (ever, really) that we&rsquo;ve already gotten the album art for. If I used a hash of the artist name and album name (or whatever inputs I wanted), I wouldn&rsquo;t be able to retrieve the artist name and the album name from the cache. Given that the cache is based on the contents of the <code>AlbumData</code> struct, I need to be able to work back from my cache key to the input content: I can&rsquo;t do that with a hash, unless I had some sort of datastore that was mapping hashes to the metadata those hashes were being generated from. This also gives us the benefit of getting known-filesystem safe paths that we can store the cache files to through the hex encoding of the text that forms the cache key&rsquo;s components.</p>
+<h3 id="how-do-we-handle-the-song-changing">How do we handle the song changing?<a href="#how-do-we-handle-the-song-changing" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>So we have an async task going off and doing some TCP server activities and we have an async task going off and fetching music metadata and album art. How do we make them talk to each other to notify the server when things have changed? Tokio&rsquo;s <code>watch</code> channel is a neat way to do this: it holds a single value and notifies subscribers when that value changes. The metadata look holds the <code>Sender</code> for the channel and every connection handling tasks get a clone of the <code>Receiver</code>. Every connection held open is able to wait for a new value to be announced until it completes one iteration of the connection loop.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">connection_loop</span>(
+</span></span><span style="display:flex;"><span>    socket: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> TcpStream,
+</span></span><span style="display:flex;"><span>    rx: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> Receiver<span style="color:#f92672">&lt;</span>AlbumData<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), ServerError<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> album_data <span style="color:#f92672">=</span> rx.borrow_and_update().clone();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> message_data <span style="color:#f92672">=</span> MessageData::from(album_data);
+</span></span><span style="display:flex;"><span>    socket.write_all(Vec::from(message_data).as_slice()).<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    rx.changed().<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>; <span style="color:#75715e">// Suspends cleanly until a new track arrives
+</span></span></span><span style="display:flex;"><span>    Ok(())
+</span></span></code></pre></div><p>This also has the benefit of ensuring that the connection is held open (as it will not be dropped by Rust as long as we are <code>await</code>ing the <code>Reciever</code> - the TcpStream will not go out of scope and be de-allocated), lowering the overhead for our client of having to establish new connections every time that it wants to poll for a song change.</p>
+<h3 id="how-can-we-make-this-better">How can we make this better?<a href="#how-can-we-make-this-better" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<h4 id="looking-at-serde-again">Looking at <code>serde</code> again<a href="#looking-at-serde-again" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>It would be nicer, I think, and maybe more idiomatic Rust, to implement my conversion of the <code>AlbumData</code> struct into the <code>MessageData</code> struct that pretty much defines the <code>smoke-signals</code> protocol using <code>serde</code>. There&rsquo;s probably no real benefit to doing that here but again: maybe something to do for the electric thrill of learning something new. The conversion of <code>MessageData</code> into a <code>Vec&lt;u8&gt;</code> (vector of bytes) only to convert it to a slice when we pass that representation to <code>write_all</code> on the <code>TcpStream</code> in the connection loop feels inelegant.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">connection_loop</span>(
+</span></span><span style="display:flex;"><span>    socket: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> TcpStream,
+</span></span><span style="display:flex;"><span>    rx: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> Receiver<span style="color:#f92672">&lt;</span>AlbumData<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span>) -&gt; Result<span style="color:#f92672">&lt;</span>(), ServerError<span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> album_data <span style="color:#f92672">=</span> rx.borrow_and_update().clone();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> message_data <span style="color:#f92672">=</span> MessageData::from(album_data);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// perhaps if we use `serde` here, we don&#39;t have to 
+</span></span></span><span style="display:flex;"><span>    socket.write_all(Vec::from(message_data).as_slice()).<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    rx.changed().<span style="color:#66d9ef">await</span><span style="color:#f92672">?</span>;
+</span></span><span style="display:flex;"><span>    Ok(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Although, writing this, a <code>From</code> implementation for <code>[u8]</code> from <code>message_data</code> may also be just as good, and being able to write just <code>message_data.into()</code> as the argument to <code>write_all</code> there would feel so much cleaner.</p>
+<h4 id="logging-and-tracing">Logging and tracing<a href="#logging-and-tracing" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>I used the Tokio <code>tracing</code> crate to get some logging information to print while I was developing this and I was&hellip; profligate both with what was logged and at what logging level. I doubt there is any logging here that is actionable in any way, and certainly there is a lot of noise. Definite space to improve here.</p>
+<h4 id="tests">Tests!<a href="#tests" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>It would be good to know when I&rsquo;ve broken something with a change, and I do love a good unit test. This is something I should look at for the future, definitely.</p>
+<h4 id="more-cover-art-providers">More Cover Art providers<a href="#more-cover-art-providers" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>Using the ListenBrainz <code>lookup</code> endpoint, I will get <em>an</em> <code>mbid</code> for a given track, more than likely. I am not, however, guaranteed to get an <code>mbid</code> for a release that has album art on Cover Art Archive. Either I need to be more thorough with how I get information from MusicBrainz (and get all possible <code>mbid</code>s) for a given release name and query them all from the Cover Art Archive or I need to find more metadata providers that I can reliably call with metadata and get the right album art.</p>
+<h4 id="caching-improvements">Caching improvements<a href="#caching-improvements" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>There&rsquo;s a couple of silly things that we do around caching at the moment. First is attempting to repopulate the LRU cache from disk on startup: if we have more than 100 cached images on disk, we do the transformation work on the album art for nothing as whatever number above 100 images we have will be evicted from the cache as part of the startup process. We should probably just check the disk as part of deciding whether we need to go to the network to get album art instead.</p>
+<p>It&rsquo;s probably also worth reconsidering what it is that needs to be cached and stored on disk: at the moment, we store the source image from Cover Art Archive. Maybe it would be more expedient to only cache the bytes representation of the album art without its metadata - in this case, a hash of the metadata would be sufficient to identify it as I wouldn&rsquo;t need to hydrate the full <code>AlbumArt</code> struct from disk, just provide the hash-as-filename and content of the file.</p>
+<h3 id="the-first-publishable-without-shame-version">The first publishable-without-shame version<a href="#the-first-publishable-without-shame-version" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>What this would end up becoming <a href="https://github.com/anitabyte/smoke-signals/commit/94e61e87094da747bf6e7af3390cf2ffaef124a4">can be found on GitHub</a>. I think, for a first cut, it&rsquo;s not that horrific.</p>
+<h2 id="the-first-roadblock">The first roadblock<a href="#the-first-roadblock" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>I live in the middle of a city and my parcel containing the Pico and the LED matrix was left in a &ldquo;safe place&rdquo; by Royal Mail. That&rsquo;s to say it was left on my doorstep and someone helped themselves to it. I hope whoever picked it up enjoys it very much and lives a long and healthy life. Fortunately, <a href="https://thepihut.com/">the Pi Hut</a> were very good about this and got a second parcel out to me.</p>
+<h2 id="the-second-roadblock">The second roadblock<a href="#the-second-roadblock" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>The Pi Pico 2 was probably not the right hardware to choose in the first place. I&rsquo;d found individual code examples for the lwIP stack that the Pico uses and an example driver for the <a href="https://docs.waveshare.com/RGB-Matrix-Px-64x64?spec=P2.5-64x64&amp;variant=P3-64x64">HUB75-based RGB matrix that I&rsquo;d bought</a>. I had not, however, seen any evidence of these two things in use at the same time.</p>
+<p>Following a little tinkering, I found that the code that I&rsquo;d written (pure C) to handle the network stack and connect to <code>smoke-signals</code> just didn&rsquo;t work when compiled with a C++ compiler. The driver that I had found relied on C++-only language features to drive the matrix. After a little fiddling and a little DuckDuckGo-ing, I also found that the interrupts used by the matrix driver and the wireless components of the Pico SDK didn&rsquo;t play well together: we&rsquo;ll put this down to a failure of research on my part and just my flighty nature and unhealthy thought that I will always be able to make something work <em>somehow</em>.</p>
+<p>Between the first roadblock and this one, I just wanted to get something working that would make me feel like I&rsquo;d accomplished something in a week of being sick and hungry: just something to remind myself that life is more than blowing my nose and listening to my stomach growl. My youthful profligacy, had led to me having a spare Raspberry Pi 4B knocking around, which I figured would have the benefits of an actual operating system over the microcontroller approach and hopefully sufficient software support to mean I wouldn&rsquo;t have to think too much in my groggy state.</p>
+<p>Suitably chastened by my foray into lower-level C and C++ programming and my abject failures there, I thought I&rsquo;d go and write something that would just get me working as quickly as possible. A Python script that would make (an impression, <em>see</em>) it as easy as possible to prove that I hadn&rsquo;t been labouring under any more design misapprehensions felt like a good idea.</p>
+<h2 id="a-naive-make-an-impression-implementation">A naive <code>make-an-impression</code> implementation<a href="#a-naive-make-an-impression-implementation" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="we-cant-escape-the-need-for-cc-compilation">We can&rsquo;t escape the need for C/C++ compilation<a href="#we-cant-escape-the-need-for-cc-compilation" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The vendor for the RGB matrix handily included some <a href="https://docs.waveshare.com/RGB-Matrix-Px-64x64/Raspberry-Pi#running-python-examples">instructions for how to build the supporting library in a broadly sane way using virtualenvs</a>. As with any C FFI library, there was a need to install some C dependencies to allow things to build, and with the stable and shared base of Raspberry Pi OS, I didn&rsquo;t expect anything to be too difficult: I&rsquo;d install the right things from <code>apt</code> and I&rsquo;d be off to the races:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install -y git build-essential cmake <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  pkg-config <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  python3-full python3-dev python3-venv <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  python3-pip <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  cython3 libjpeg-dev zlib1g-dev
+</span></span></code></pre></div><p>All makes sense: build tools, Python library headers, a JPEG library, a compression library. All that I&rsquo;m told I&rsquo;ve left to do is run <code>python -m pip install numpy pillow scikit-build-core cython</code> and <code>python -m pip install -v .</code> and I should be off to the races.</p>
+<p>No, we missed a dependency in our documentation: I see the error we can&rsquo;t import <code>Imaging.h</code> from the <a href="https://github.com/hzeller/rpi-rgb-led-matrix/blob/master/bindings/python/rgbmatrix/shims/pillow.c">Pillow shim used by the library</a>. A quick install of <code>apt-file</code> and an <code>apt-file update</code> later and I managed to find that that binding was in the package <code>python3-pil</code> with an invocation of <code>apt-file search Imaging.h</code>. With that installed, we managed to build the library.</p>
+<h3 id="the-initial-version">The initial version<a href="#the-initial-version" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>I think it&rsquo;s a lot rougher than the server half of this, <a href="https://github.com/anitabyte/make-an-impression/commit/f2efd4d635c7edd011234024a914257a9a890e42">but I believe in showing ugly things off in the hope that I get to improve them</a>.</p>
+<h3 id="how-does-this-perform">How does this perform?<a href="#how-does-this-perform" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Well, it works, and what&rsquo;s more important than that? Production-safe? Sure, it&rsquo;s a thing that sits on my desk: I can produce a process restart whenever I want. The keen-eyed among readers may have noticed that we, for every loop, create a connection and then close it. This isn&rsquo;t in line with the effort I went to with <code>smoke-signals</code> to ensure that the server would be able to notify the client immediately once a new song has been detected as playing from ListenBrainz.</p>
+<h3 id="receive-exactly-the-number-of-bytes-you-expect">Receive exactly the number of bytes you expect<a href="#receive-exactly-the-number-of-bytes-you-expect" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<pre tabindex="0"><code>def recv_exact(sock, n):
+    data = bytearray()
+    while len(data) &lt; n:
+        packet = sock.recv(n - len(data))
+        if not packet:
+            raise ConnectionError(&#34;Connection closed.&#34;)
+        data.extend(packet)
+    return data
+</code></pre><p>This is a useful helper function: you don&rsquo;t always get the number of bytes you request when you call <code>recv</code> on a socket: you get <em>up to</em> that amount depending what&rsquo;s in the OS&rsquo;s network buffer at the time of the call. If we keep on trying to <code>recv</code> until we get the count of bytes we expect, we actually get what we ask for.</p>
+<p>We&rsquo;ll ignore the fact that I only used it for the album art element of the message: I deserve faults that I can&rsquo;t diagnose because of network issues that may well be transient. If I can&rsquo;t <code>recv()</code> 2 bytes for the message length because of the network buffer not having <em>two bytes</em> in it and I get the wrong value because of that, I simply have to accept the universe is out to get me.</p>
+<h3 id="future-improvements">Future improvements<a href="#future-improvements" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p><code>make-an-impression</code>, as it stands, is incredibly brittle and I&rsquo;m not sure I have faith that I&rsquo;d be able to rebuild the Python driver for the matrix if the vendor documentation website disappeared. This half of the project was in no way an exercise in engineering, but more an exercise in getting something that shows me pretty lights as quickly as possible.</p>
+<h4 id="similar-concurrency-optimisations-to-smoke-signals">Similar concurrency optimisations to <code>smoke-signals</code><a href="#similar-concurrency-optimisations-to-smoke-signals" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>In my mental model for the delivery of the Pico version of this solution, one of the processor cores would have been responsible for the handling of network traffic and the other would have been responsible for the handling of managing the matrix. As it stands, we just do a big dump loop in one thread calling the server with a new connection every time, driving the matrix in every loop. This is inefficient in that we&rsquo;re calling updates to the matrix more often than we need to.</p>
+<h4 id="better-error-handling">Better error handling<a href="#better-error-handling" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>Frankly, there is no error handling at the moment. Some would be better than none.</p>
+<h2 id="where-things-stand-for-now">Where things stand (for now)<a href="#where-things-stand-for-now" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Despite stolen deliveries, low-level interrupt mismatches, and a pivot from C on a Pi Pico 2 W to Python on a Raspberry Pi 4, I have what I set out for: pretty flashing lights on my desk showing the album art of whatever I&rsquo;m currently scrobbling to ListenBrainz. Most of the time.</p>
+<p>It’s far from polished. <code>smoke-signals</code> has logging that reads like a cry for help from someone who is really fixated on the number <code>12288</code>, <code>make-an-impression</code> is held together by good vibes and I still can&rsquo;t eat solid food for another two months. But as a purely ill-advised, zero-practical-utility distraction? It’s been an absolute success.</p>
+<p>In <strong>Part #2</strong>, I’ll be back to tackle fixing the client-side TCP connection handling, properly handling missing cover art across multiple providers, and maybe going a little bit closer to the metal on the client side. I&rsquo;m still somewhat chastened though.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="/posts/listening_2023-10-08/" class="button inline next">
+         [<span class="button__text">Listening - 2023-10-08</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Rust on anitabyte</title>
+		<link>/tags/rust/</link>
+		<description>Recent content in Rust on anitabyte</description>
+		<generator>Hugo</generator>
+		<language>en-gb</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 17 Jul 2026 19:00:00 +0100</lastBuildDate>
+		
+			<atom:link href="/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>An Ill-Advised Project #1</title>
+				<link>/posts/ill_advised_project_1/</link>
+				<pubDate>Fri, 17 Jul 2026 19:00:00 +0100</pubDate>
+				<guid>/posts/ill_advised_project_1/</guid>
+				<description>&lt;p&gt;I am easily influenced, as much as I will always want to claim otherwise. One such occasion was when I saw Instagram user &lt;a href=&#34;https://www.instagram.com/reel/DZ27tTTRosE/&#34;&gt;@mewtru&amp;rsquo;s reel&lt;/a&gt; where they had created an LED matrix that displayed spinning album art from Spotify. To get an idea of how targeted to my interests this is, I saw it independently and then had two people I know show me the reel: it&amp;rsquo;s music, flashing lights and computers and I am hideously typecast in life.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

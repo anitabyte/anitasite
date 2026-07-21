@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on anitabyte</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on anitabyte</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 08 Oct 2023 23:59:15 +0100</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>listening</title>
-      <link>/tags/listening/</link>
-      <pubDate>Sun, 08 Oct 2023 23:59:15 +0100</pubDate>
-      
-      <guid>/tags/listening/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>music</title>
-      <link>/tags/music/</link>
-      <pubDate>Sun, 08 Oct 2023 23:59:15 +0100</pubDate>
-      
-      <guid>/tags/music/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>arm64</title>
-      <link>/tags/arm64/</link>
-      <pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
-      
-      <guid>/tags/arm64/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>pi</title>
-      <link>/tags/pi/</link>
-      <pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
-      
-      <guid>/tags/pi/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>benchmarks</title>
-      <link>/tags/benchmarks/</link>
-      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
-      
-      <guid>/tags/benchmarks/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>cooling</title>
-      <link>/tags/cooling/</link>
-      <pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
-      
-      <guid>/tags/cooling/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Tags on anitabyte</title>
+		<link>/tags/</link>
+		<description>Recent content in Tags on anitabyte</description>
+		<generator>Hugo</generator>
+		<language>en-gb</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 17 Jul 2026 19:00:00 +0100</lastBuildDate>
+		
+			<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Listenbrainz</title>
+				<link>/tags/listenbrainz/</link>
+				<pubDate>Fri, 17 Jul 2026 19:00:00 +0100</pubDate>
+				<guid>/tags/listenbrainz/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>/tags/python/</link>
+				<pubDate>Fri, 17 Jul 2026 19:00:00 +0100</pubDate>
+				<guid>/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Rust</title>
+				<link>/tags/rust/</link>
+				<pubDate>Fri, 17 Jul 2026 19:00:00 +0100</pubDate>
+				<guid>/tags/rust/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Listening</title>
+				<link>/tags/listening/</link>
+				<pubDate>Sun, 08 Oct 2023 23:59:15 +0100</pubDate>
+				<guid>/tags/listening/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Music</title>
+				<link>/tags/music/</link>
+				<pubDate>Sun, 08 Oct 2023 23:59:15 +0100</pubDate>
+				<guid>/tags/music/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Arm64</title>
+				<link>/tags/arm64/</link>
+				<pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
+				<guid>/tags/arm64/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pi</title>
+				<link>/tags/pi/</link>
+				<pubDate>Fri, 22 Sep 2023 12:36:37 +0100</pubDate>
+				<guid>/tags/pi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Benchmarks</title>
+				<link>/tags/benchmarks/</link>
+				<pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+				<guid>/tags/benchmarks/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cooling</title>
+				<link>/tags/cooling/</link>
+				<pubDate>Wed, 19 Jul 2023 22:36:37 +0100</pubDate>
+				<guid>/tags/cooling/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>
